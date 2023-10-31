@@ -23,6 +23,7 @@
 		987CF4162AF187B6003468F4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4152AF187B6003468F4 /* RxCocoa */; };
 		987CF4182AF187B6003468F4 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */; };
 		987CF41A2AF192A7003468F4 /* NetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF4192AF192A7003468F4 /* NetworkTypes.swift */; };
+		987CF41C2AF1A119003468F4 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF41B2AF1A119003468F4 /* WebViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		987CF40A2AF15ADC003468F4 /* GithubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchViewController.swift; sourceTree = "<group>"; };
 		987CF40C2AF16F53003468F4 /* GithubSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchTableViewCell.swift; sourceTree = "<group>"; };
 		987CF4192AF192A7003468F4 /* NetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTypes.swift; sourceTree = "<group>"; };
+		987CF41B2AF1A119003468F4 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				987CF4192AF192A7003468F4 /* NetworkTypes.swift */,
 				987CF40C2AF16F53003468F4 /* GithubSearchTableViewCell.swift */,
 				987CF40A2AF15ADC003468F4 /* GithubSearchViewController.swift */,
+				987CF41B2AF1A119003468F4 /* WebViewViewController.swift */,
 				987CF3E02AF14BD4003468F4 /* Main.storyboard */,
 				987CF3E32AF14BD5003468F4 /* Assets.xcassets */,
 				987CF3E52AF14BD5003468F4 /* LaunchScreen.storyboard */,
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CF41C2AF1A119003468F4 /* WebViewViewController.swift in Sources */,
 				987CF41A2AF192A7003468F4 /* NetworkTypes.swift in Sources */,
 				987CF40D2AF16F53003468F4 /* GithubSearchTableViewCell.swift in Sources */,
 				987CF3DF2AF14BD4003468F4 /* ViewController.swift in Sources */,

@@ -24,6 +24,21 @@ class GithubSearchViewController: UITableViewController {
         self.navigationItem.searchController = search
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let data = items[indexPath.row]
+
+        switch segue.identifier {
+        case "openDetail":
+            if let dest = segue.destination as? WebViewViewController {
+                dest.url = data.html_url
+            }
+        default:
+            break
+        }
+    }
 }
 
 extension GithubSearchViewController: UISearchControllerDelegate {

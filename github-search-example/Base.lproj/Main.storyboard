@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,6 +99,7 @@
                                     <outlet property="repoLanguageLabel" destination="CoV-CE-iBz" id="nH0-cv-zSm"/>
                                     <outlet property="repoNameLabel" destination="qyw-He-QxJ" id="ChY-1p-SeI"/>
                                     <outlet property="repoStarsLabel" destination="nsO-NR-PRM" id="ySf-XV-OHp"/>
+                                    <segue destination="kon-3E-nv6" kind="show" identifier="openDetail" id="qhY-ZC-hRW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -111,6 +113,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onb-hs-Uu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1710.6870229007634" y="3.5211267605633805"/>
+        </scene>
+        <!--Web View View Controller-->
+        <scene sceneID="OPV-9l-kK4">
+            <objects>
+                <viewController id="kon-3E-nv6" customClass="WebViewViewController" customModule="github_search_example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cl4-Ld-SDl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3E-YG-3LT">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="j67-Hn-RGH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="C3E-YG-3LT" secondAttribute="bottom" id="Blg-6S-OXU"/>
+                            <constraint firstItem="C3E-YG-3LT" firstAttribute="leading" secondItem="j67-Hn-RGH" secondAttribute="leading" id="Cob-dU-aq6"/>
+                            <constraint firstItem="C3E-YG-3LT" firstAttribute="top" secondItem="j67-Hn-RGH" secondAttribute="top" id="NXf-2M-ypP"/>
+                            <constraint firstItem="C3E-YG-3LT" firstAttribute="trailing" secondItem="j67-Hn-RGH" secondAttribute="trailing" id="rK3-nf-N7H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kwd-t1-iMu"/>
+                    <connections>
+                        <outlet property="webView" destination="C3E-YG-3LT" id="9FH-fH-9Ln"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9cN-sN-Roq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2496.9465648854962" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YYh-Gm-5v0">
