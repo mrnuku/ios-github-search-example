@@ -24,6 +24,7 @@
 		987CF4182AF187B6003468F4 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */; };
 		987CF41A2AF192A7003468F4 /* NetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF4192AF192A7003468F4 /* NetworkTypes.swift */; };
 		987CF41C2AF1A119003468F4 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF41B2AF1A119003468F4 /* WebViewViewController.swift */; };
+		987CF41F2AF1A368003468F4 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF41E2AF1A368003468F4 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 				987CF4162AF187B6003468F4 /* RxCocoa in Frameworks */,
 				987CF4142AF1743E003468F4 /* RxSwift-Dynamic in Frameworks */,
 				987CF4122AF1743E003468F4 /* RxSwift in Frameworks */,
+				987CF41F2AF1A368003468F4 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +170,7 @@
 				987CF4132AF1743E003468F4 /* RxSwift-Dynamic */,
 				987CF4152AF187B6003468F4 /* RxCocoa */,
 				987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */,
+				987CF41E2AF1A368003468F4 /* SDWebImage */,
 			);
 			productName = "github-search-example";
 			productReference = 987CF3D72AF14BD4003468F4 /* github-search-example.app */;
@@ -243,6 +246,7 @@
 			mainGroup = 987CF3CE2AF14BD4003468F4;
 			packageReferences = (
 				987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				987CF41D2AF1A368003468F4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 987CF3D82AF14BD4003468F4 /* Products */;
 			projectDirPath = "";
@@ -656,6 +660,14 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		987CF41D2AF1A368003468F4 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -678,6 +690,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = "RxCocoa-Dynamic";
+		};
+		987CF41E2AF1A368003468F4 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 987CF41D2AF1A368003468F4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

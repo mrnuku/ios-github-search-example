@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SDWebImage
 
 class GithubSearchViewController: UITableViewController {
     
@@ -104,6 +105,7 @@ extension GithubSearchViewController {
             
             let cellData = items[indexPath.row]
             
+            cell.avatarImageView.sd_setImage(with: URL(string: cellData.owner.avatar_url), placeholderImage: UIImage(named: "github-mark.png"))
             cell.ownerNameLabel.text = cellData.owner.login
             cell.repoNameLabel.text = cellData.full_name
             cell.repoDescriptionLabel.text = cellData.description
