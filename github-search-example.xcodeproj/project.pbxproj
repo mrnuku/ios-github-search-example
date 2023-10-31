@@ -18,6 +18,11 @@
 		987CF3FE2AF14BD5003468F4 /* github_search_exampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF3FD2AF14BD5003468F4 /* github_search_exampleUITestsLaunchTests.swift */; };
 		987CF40B2AF15ADC003468F4 /* GithubSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF40A2AF15ADC003468F4 /* GithubSearchViewController.swift */; };
 		987CF40D2AF16F53003468F4 /* GithubSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF40C2AF16F53003468F4 /* GithubSearchTableViewCell.swift */; };
+		987CF4122AF1743E003468F4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4112AF1743E003468F4 /* RxSwift */; };
+		987CF4142AF1743E003468F4 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4132AF1743E003468F4 /* RxSwift-Dynamic */; };
+		987CF4162AF187B6003468F4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4152AF187B6003468F4 /* RxCocoa */; };
+		987CF4182AF187B6003468F4 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */; };
+		987CF41A2AF192A7003468F4 /* NetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CF4192AF192A7003468F4 /* NetworkTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,7 @@
 		987CF3FD2AF14BD5003468F4 /* github_search_exampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = github_search_exampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		987CF40A2AF15ADC003468F4 /* GithubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchViewController.swift; sourceTree = "<group>"; };
 		987CF40C2AF16F53003468F4 /* GithubSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchTableViewCell.swift; sourceTree = "<group>"; };
+		987CF4192AF192A7003468F4 /* NetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CF4182AF187B6003468F4 /* RxCocoa-Dynamic in Frameworks */,
+				987CF4162AF187B6003468F4 /* RxCocoa in Frameworks */,
+				987CF4142AF1743E003468F4 /* RxSwift-Dynamic in Frameworks */,
+				987CF4122AF1743E003468F4 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +116,7 @@
 				987CF3DA2AF14BD4003468F4 /* AppDelegate.swift */,
 				987CF3DC2AF14BD4003468F4 /* SceneDelegate.swift */,
 				987CF3DE2AF14BD4003468F4 /* ViewController.swift */,
+				987CF4192AF192A7003468F4 /* NetworkTypes.swift */,
 				987CF40C2AF16F53003468F4 /* GithubSearchTableViewCell.swift */,
 				987CF40A2AF15ADC003468F4 /* GithubSearchViewController.swift */,
 				987CF3E02AF14BD4003468F4 /* Main.storyboard */,
@@ -149,6 +160,12 @@
 			dependencies = (
 			);
 			name = "github-search-example";
+			packageProductDependencies = (
+				987CF4112AF1743E003468F4 /* RxSwift */,
+				987CF4132AF1743E003468F4 /* RxSwift-Dynamic */,
+				987CF4152AF187B6003468F4 /* RxCocoa */,
+				987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */,
+			);
 			productName = "github-search-example";
 			productReference = 987CF3D72AF14BD4003468F4 /* github-search-example.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +238,9 @@
 				Base,
 			);
 			mainGroup = 987CF3CE2AF14BD4003468F4;
+			packageReferences = (
+				987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 987CF3D82AF14BD4003468F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -264,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CF41A2AF192A7003468F4 /* NetworkTypes.swift in Sources */,
 				987CF40D2AF16F53003468F4 /* GithubSearchTableViewCell.swift in Sources */,
 				987CF3DF2AF14BD4003468F4 /* ViewController.swift in Sources */,
 				987CF3DB2AF14BD4003468F4 /* AppDelegate.swift in Sources */,
@@ -621,6 +642,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		987CF4112AF1743E003468F4 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		987CF4132AF1743E003468F4 /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+		987CF4152AF187B6003468F4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		987CF4172AF187B6003468F4 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 987CF4102AF1743E003468F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 987CF3CF2AF14BD4003468F4 /* Project object */;
 }

@@ -6,12 +6,13 @@
 //
 
 import UIKit
-import SwiftUI
+import RxSwift
+import RxCocoa
 
 class GithubSearchViewController: UITableViewController {
     
-    var searchText: String = ""
-    var isFiltered = false
+    var reqest: Disposable?
+    var items: [Repo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,30 +24,52 @@ class GithubSearchViewController: UITableViewController {
         self.navigationItem.searchController = search
     }
 
-
 }
 
 extension GithubSearchViewController: UISearchControllerDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchText = ""
-        isFiltered = false
-        self.tableView.reloadData()
+        items = []
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 }
 
 extension GithubSearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-            self.searchText = ""
-            isFiltered = false
-            self.tableView.reloadData()
-            return
+        reqest?.dispose()
+        
+        if !searchText.isEmpty {
+            
+            let req = URLRequest(url: URL(string: "https://api.github.com/search/repositories?q=\(searchText)")!)
+            let responseJSON = URLSession.shared.rx.data(request: req)
+            
+            reqest = responseJSON
+            // this will fire the request
+                .subscribe(onNext: { data in
+                    
+                    let decoder = JSONDecoder()
+                    var itemsNew: [Repo] = []
+                    
+                    do { 
+                        let decoded = try decoder.decode(SearchResponse.self, from: data)
+                        itemsNew = decoded.items
+                    }
+                    catch {
+                        print("deserialization failed: \(error)")
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.items = itemsNew
+                        self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                    }
+                    
+                })
         }
-        self.searchText = searchText
-        isFiltered = true
-        self.tableView.reloadData()
+        else {
+            self.items = []
+            self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }
     }
 }
 
@@ -54,10 +77,25 @@ extension GithubSearchViewController: UISearchBarDelegate {
 extension GithubSearchViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        return items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        
+        let dequedCell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        
+        if let cell = dequedCell as? GithubSearchTableViewCell {
+            
+            let cellData = items[indexPath.row]
+            
+            cell.ownerNameLabel.text = cellData.owner.login
+            cell.repoNameLabel.text = cellData.full_name
+            cell.repoDescriptionLabel.text = cellData.description
+            cell.repoLanguageLabel.text = cellData.language
+            cell.repoStarsLabel.text = "☆ \(cellData.stargazers_count)"
+        }
+        
+        return dequedCell
     }
 }
