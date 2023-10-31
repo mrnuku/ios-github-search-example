@@ -1,24 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPl-2u-83k">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Search For Github Repos-->
+        <scene sceneID="8Ua-AS-GVo">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="ES2-tW-AzX" customClass="GithubSearchViewController" customModule="github_search_example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8nZ-DR-n5Q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="9M3-Zh-yRc" customClass="GithubSearchTableViewCell" customModule="github_search_example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="208.33332824707031"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9M3-Zh-yRc" id="EXd-cm-Tl9">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="208.33332824707031"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github-mark" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-QV-Yg5">
+                                            <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="9Jw-NJ-EWZ"/>
+                                                <constraint firstAttribute="height" constant="40" id="mlC-Vh-rkN"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyV-Mb-zJy">
+                                            <rect key="frame" x="68" y="29.666666666666671" width="305" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyw-He-QxJ">
+                                            <rect key="frame" x="20" y="68" width="353" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" systemColor="linkColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description Line2 Line3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-zs-8Ur">
+                                            <rect key="frame" x="20" y="97" width="353" height="54.333333333333343"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objective-C++" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-CE-iBz">
+                                            <rect key="frame" x="20" y="159.33333333333334" width="101" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LT-z3-78H">
+                                            <rect key="frame" x="129" y="159.33333333333334" width="4.3333333333333428" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☆ 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-NR-PRM">
+                                            <rect key="frame" x="141" y="159.33333333333334" width="44" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CoV-CE-iBz" firstAttribute="leading" secondItem="Xaa-zs-8Ur" secondAttribute="leading" id="0Qi-k5-t5B"/>
+                                        <constraint firstItem="DyV-Mb-zJy" firstAttribute="centerY" secondItem="jAs-QV-Yg5" secondAttribute="centerY" id="6qL-Iz-mhf"/>
+                                        <constraint firstItem="DyV-Mb-zJy" firstAttribute="trailing" secondItem="EXd-cm-Tl9" secondAttribute="trailingMargin" id="7kI-QU-pUF"/>
+                                        <constraint firstItem="qyw-He-QxJ" firstAttribute="top" secondItem="jAs-QV-Yg5" secondAttribute="bottom" constant="8" symbolic="YES" id="936-vi-3Yn"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="nsO-NR-PRM" secondAttribute="trailing" constant="20" id="9YG-lp-eb1"/>
+                                        <constraint firstItem="nsO-NR-PRM" firstAttribute="leading" secondItem="8LT-z3-78H" secondAttribute="trailing" constant="7.6666666666666572" id="D8r-g7-HHp"/>
+                                        <constraint firstItem="jAs-QV-Yg5" firstAttribute="top" secondItem="EXd-cm-Tl9" secondAttribute="top" constant="20" symbolic="YES" id="GZZ-PB-pbM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="CoV-CE-iBz" secondAttribute="bottom" constant="20" id="GyI-yb-kEy"/>
+                                        <constraint firstItem="Xaa-zs-8Ur" firstAttribute="top" secondItem="qyw-He-QxJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Hcx-lf-ch4"/>
+                                        <constraint firstItem="8LT-z3-78H" firstAttribute="centerY" secondItem="CoV-CE-iBz" secondAttribute="centerY" id="MvK-wW-Dx8"/>
+                                        <constraint firstItem="nsO-NR-PRM" firstAttribute="centerY" secondItem="8LT-z3-78H" secondAttribute="centerY" id="UWT-s9-qgC"/>
+                                        <constraint firstItem="qyw-He-QxJ" firstAttribute="leading" secondItem="jAs-QV-Yg5" secondAttribute="leading" id="XbH-Q6-C6R"/>
+                                        <constraint firstItem="Xaa-zs-8Ur" firstAttribute="trailing" secondItem="qyw-He-QxJ" secondAttribute="trailing" id="YUE-pd-V5d"/>
+                                        <constraint firstItem="qyw-He-QxJ" firstAttribute="trailing" secondItem="DyV-Mb-zJy" secondAttribute="trailing" id="aIw-Kb-8LP"/>
+                                        <constraint firstItem="DyV-Mb-zJy" firstAttribute="leading" secondItem="jAs-QV-Yg5" secondAttribute="trailing" constant="8" symbolic="YES" id="jRW-vn-FIR"/>
+                                        <constraint firstItem="8LT-z3-78H" firstAttribute="leading" secondItem="CoV-CE-iBz" secondAttribute="trailing" constant="8" symbolic="YES" id="k4l-ny-uvG"/>
+                                        <constraint firstItem="jAs-QV-Yg5" firstAttribute="leading" secondItem="EXd-cm-Tl9" secondAttribute="leading" constant="20" symbolic="YES" id="mPr-Ja-6LG"/>
+                                        <constraint firstItem="CoV-CE-iBz" firstAttribute="centerY" secondItem="nsO-NR-PRM" secondAttribute="centerY" id="qJG-gJ-PGg"/>
+                                        <constraint firstItem="Xaa-zs-8Ur" firstAttribute="leading" secondItem="qyw-He-QxJ" secondAttribute="leading" id="sVR-Ud-uUD"/>
+                                        <constraint firstItem="CoV-CE-iBz" firstAttribute="top" secondItem="Xaa-zs-8Ur" secondAttribute="bottom" constant="8" symbolic="YES" id="spK-hw-LdI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="jAs-QV-Yg5" id="6kL-M1-pM8"/>
+                                    <outlet property="ownerNameLabel" destination="DyV-Mb-zJy" id="6rb-32-3MV"/>
+                                    <outlet property="repoDescriptionLabel" destination="Xaa-zs-8Ur" id="8pO-aN-wjr"/>
+                                    <outlet property="repoLanguageLabel" destination="CoV-CE-iBz" id="nH0-cv-zSm"/>
+                                    <outlet property="repoNameLabel" destination="qyw-He-QxJ" id="ChY-1p-SeI"/>
+                                    <outlet property="repoStarsLabel" destination="nsO-NR-PRM" id="ySf-XV-OHp"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ES2-tW-AzX" id="ZXs-0G-S4S"/>
+                            <outlet property="delegate" destination="ES2-tW-AzX" id="2QU-gc-Jjd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search For Github Repos" id="oM6-qa-N6X"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onb-hs-Uu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1710.6870229007634" y="3.5211267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YYh-Gm-5v0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JPl-2u-83k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gTl-Xs-9aj">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ES2-tW-AzX" kind="relationship" relationship="rootViewController" id="rsD-Hm-JTq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWl-GT-7Iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="783.96946564885491" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="github-mark" width="120" height="120"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
