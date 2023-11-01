@@ -13,6 +13,7 @@ target 'github-search-example' do
   target 'github-search-exampleTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking', '6.6.0'
   end
 
   target 'github-search-exampleUITests' do

@@ -6,6 +6,10 @@
 //
 
 import XCTest
+import RxSwift
+import RxCocoa
+import RxBlocking
+
 @testable import github_search_example
 
 final class github_search_exampleTests: XCTestCase {
@@ -18,19 +22,19 @@ final class github_search_exampleTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSearchRepos() throws {
+        let searchText = "git"
+        let req = URLRequest(url: URL(string: "https://api.github.com/search/repositories?q=\(searchText)")!)
+        let responseData = URLSession.shared.rx.data(request: req)
+        var items: [Repo] = []
+        
+        if let data = try responseData.toBlocking().first() {
+            let decoder = JSONDecoder()
+            let decoded = try decoder.decode(SearchResponse.self, from: data)
+            items = decoded.items
         }
+        
+        XCTAssertGreaterThan(items.count, 0)
     }
 
 }
