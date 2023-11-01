@@ -2,6 +2,8 @@
 
 Sample iOS application for fetching and displaying repository data from github
 
+![alt text](https://mrnuku.github.io/githubsearch-white.png)
+![alt text](https://mrnuku.github.io/githubsearch-black.png)
 
 ## installation
 
