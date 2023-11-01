@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import SDWebImage
 
-class GithubSearchViewController: UITableViewController {
+class GithubSearchTableViewController: UITableViewController {
     
     var reqest: Disposable?
     var items: [Repo] = []
@@ -26,23 +26,26 @@ class GithubSearchViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        let data = items[indexPath.row]
-
-        switch segue.identifier {
-        case "openDetail":
-            if let dest = segue.destination as? WebViewViewController {
-                dest.url = data.html_url
+        if let indexPath = tableView.indexPathForSelectedRow {
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            let data = items[indexPath.row]
+            
+            switch segue.identifier {
+            case "openDetail":
+                if let dest = segue.destination as? WebViewViewController {
+                    dest.url = data.html_url
+                }
+            default:
+                break
             }
-        default:
-            break
         }
     }
 }
 
-extension GithubSearchViewController: UISearchControllerDelegate {
+extension GithubSearchTableViewController: UISearchControllerDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         items = []
@@ -50,37 +53,17 @@ extension GithubSearchViewController: UISearchControllerDelegate {
     }
 }
 
-extension GithubSearchViewController: UISearchBarDelegate {
+extension GithubSearchTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reqest?.dispose()
         
         if !searchText.isEmpty {
             
-            let req = URLRequest(url: URL(string: "https://api.github.com/search/repositories?q=\(searchText)")!)
-            let responseJSON = URLSession.shared.rx.data(request: req)
-            
-            reqest = responseJSON
-            // this will fire the request
-                .subscribe(onNext: { data in
-                    
-                    let decoder = JSONDecoder()
-                    var itemsNew: [Repo] = []
-                    
-                    do { 
-                        let decoded = try decoder.decode(SearchResponse.self, from: data)
-                        itemsNew = decoded.items
-                    }
-                    catch {
-                        print("deserialization failed: \(error)")
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.items = itemsNew
-                        self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-                    }
-                    
-                })
+            reqest = searchRepos(searchText: searchText, success: { items in
+                self.items = items
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            })
         }
         else {
             self.items = []
@@ -90,7 +73,7 @@ extension GithubSearchViewController: UISearchBarDelegate {
 }
 
 // UITableViewDelegate and DataSource
-extension GithubSearchViewController {
+extension GithubSearchTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
